@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="reset.css" />
+  <link rel="stylesheet" href="app.component.css" />
+</head>
+
+<body>
+  <div class="container_body_principal">
+    <div class="container-carga-instrucciones">
+      <div class="subcontainer-instrucciones">
+        <mat-form-field class="container__body__principal__input">
+          <mat-label>Instrucciones</mat-label>
+          <textarea id="text-area__imput" matInput [(ngModel)]="instruccionesIntroducidas"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="subcontainer-button">
+        <button class="header__button" mat-raised-button color="primary" (click)="cargarYEjecutarInstrucciones()"
+          [disabled]="!habilitarBtnEjecutar">
+          <mat-icon>play_arrow</mat-icon>Iniciar
+        </button>
+      </div>
+      <div class="subcontainer-button">
+        <button class="header__button" mat-raised-button color="warn" (click)="reiniciarSimulador()">
+          <mat-icon>restart_alt</mat-icon>Reiniciar
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="container-componentes-principales-CPU">
+      <div class="container__body__principal__center__UC"
+        [ngClass]="{ elemento__procesador__activo: unidadControlEstaActiva }">
+        Unidad de control
+      </div>
+      <div class="container__body__principal__center__ALU" [ngClass]="{ elemento__procesador__activo: aluEstaActiva }">
+        <div class="container__span__alu">
+          <h1>ALU</h1>
+          <div>
+            <span>{{ ALU.operando1 }}</span> ----
+            {{ ALU.operacionAEjecutar }} ---- <span>{{ ALU.operando2 }}</span>
+          </div>
+          <span>Resultado: {{ ALU.resultado }}</span>
+        </div>
+      </div>
+      <div class="container__body__principal__center__AG"
+        [ngClass]="{ elemento__procesador__activo: almacenGeneralEstaActivo }">
+        <div>
+          Banco de registros
+          <br /><br /><br />
+          <div>
+            A: {{ almacenGeneral.A }} - B: {{ almacenGeneral.B }} <br />
+            C: {{ almacenGeneral.C }} - D: {{ almacenGeneral.D }} <br />
+            E: {{ almacenGeneral.E }} - F: {{ almacenGeneral.F }} <br />
+            G: {{ almacenGeneral.G }} - H: {{ almacenGeneral.H }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-componentes-secundarios-CPU">
+      <div class="PC" [ngClass]="{ elemento__procesador__activo: pcEstaActivo }">
+        PC
+        <br />
+        {{ PC + 1 }}
+      </div>
+      <div class="MAR" [ngClass]="{ elemento__procesador__activo: marEstaActivo }">
+        MAR
+        <br />
+        {{ MAR + 1 }}
+      </div>
+      <div class="container__body__principal__center__MBR" [ngClass]="{ elemento__procesador__activo: mbrEstaActivo }">
+        MBR
+        <br />
+        {{ MBR }}
+      </div>
+      <div class="container__body__principal__center__IR" [ngClass]="{ elemento__procesador__activo: irEstaActivo }">
+        IR
+        <br />
+        {{ IR }}
+      </div>
+    </div>
+
+    <div class="container-buses-principales">
+      <div class="buses__container">
+        <div class="directions" [ngClass]="{
+              elemento__procesador__activo: busDireccionesEstaActivo
+            }">
+          Bus de direcciones
+        </div>
+      </div>
+      <div class="buses__container">
+        <div class="data" [ngClass]="{ elemento__procesador__activo: busDatosEstaActivo }">
+          Bus de datos
+        </div>
+      </div>
+      <div class="buses__container">
+        <div class="control" [ngClass]="{ elemento__procesador__activo: busControlEstaActivo }">
+          Bus de control
+        </div>
+      </div>
+    </div>
+
+    <div class="container-componentes-finales">
+      <mat-card class="container__body__principal__card"
+        [ngClass]="{ elemento__procesador__activo: memoriaEstaActiva }">
+        <mat-card-title>MEMORIA DE PROGRAMA</mat-card-title>
+        <mat-card-content>
+          <div *ngFor="let instruccion of memoria.celdas; index as index">
+            {{ index + 1 }} - {{ instruccion }}
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="container__io">
+        <mat-card-title>ENTRADA</mat-card-title>
+        <mat-card-content>
+          <mat-form-field>
+            <mat-label>Valor de entrada</mat-label>
+            <input matInput type="number" [(ngModel)]="valorEntrada">
+          </mat-form-field>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="container__output">
+        <mat-card-title> OUTPUT </mat-card-title>
+        <mat-card-content>
+          <div>
+            {{ estadoComputador }}
+          </div>
+          <div>
+            {{ output }}
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="container__memoria__datos">
+        <mat-card-title>MEMORIA DE DATOS (4x4)</mat-card-title>
+        <mat-card-content>
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th *ngFor="let col of [0,1,2,3]">Col {{ col }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let fila of memoriaDatos.matriz; index as i">
+                <td><strong>Fila {{ i }}</strong></td>
+                <td *ngFor="let celda of fila">{{ celda }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-card-content>
+      </mat-card>
+
+
+
+
+    </div>
+  </div>
+</body>
+
+</html>

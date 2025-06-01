@@ -1,0 +1,27 @@
+load a 20
+load b 10
+load c 5
+load d 2
+add a b e
+sub a b f
+mul c d b
+div a d a
+inc c 2
+dec c 1
+not d
+or c d g
+and c d h
+move a b
+cmp a b g
+jne 14
+je 17
+store_mem a 0 0
+store_mem b 0 1
+store_mem c 1 0
+load_mem d 0 0
+load_mem e 0 1
+in f
+out f
+jmp 0
+halt
+load a 999
