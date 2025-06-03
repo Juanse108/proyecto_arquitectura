@@ -22,55 +22,48 @@ body {
   background-color: #ffffff;
   border-radius: 16px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  text-transform: uppercase;
 }
 
-/* SUBCONTENEDORES DE INSTRUCCIONES Y BOTÓN */
+/* PRIMERA SECCIÓN (Instrucciones y botones) */
+.container-carga-instrucciones {
+  width: 280px;
+  flex-shrink: 0;
+  background-color: #f8f9fc;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.05);
+}
+
 .subcontainer-instrucciones,
 .subcontainer-button {
   margin-bottom: 12px;
-  text-transform: uppercase;
-}
-
-.container-carga-instrucciones {
-  width: 100%;
-  max-width: 400px;
-  text-transform: uppercase;
 }
 
 #text-area__imput {
-  height: 150px;
+  height: 140px;
   resize: vertical;
-  text-transform: uppercase;
 }
 
-.container-buses-principales {
-  flex: 1;
-  display: flex;
-  min-width: 250px;
-  background-color: #f0f2f5;
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.05);
-  justify-content: center;
-  text-transform: uppercase;
+/* BOTONES */
+.header__button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
 }
 
-/* CONTENEDORES DE COMPONENTES */
+/* SECCIONES DE COMPONENTES */
 .container-componentes-principales-CPU,
 .container-componentes-secundarios-CPU,
 .container-buses-principales,
 .container-componentes-finales {
   flex: 1;
-  min-width: 210px;
   background-color: #f0f2f5;
   border-radius: 12px;
   padding: 16px;
   box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.05);
-  text-transform: uppercase;
 }
 
-/* ESTILO DE COMPONENTES INDIVIDUALES */
+/* COMPONENTES INDIVIDUALES */
 .container__body__principal__center__UC,
 .container__body__principal__center__ALU,
 .container__body__principal__center__AG,
@@ -90,10 +83,9 @@ body {
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  text-transform: uppercase;
 }
 
-/* ESTILO ESPECÍFICO PARA LA ALU */
+/* ALU personalizada */
 .container__body__principal__center__ALU {
   position: relative;
 }
@@ -112,18 +104,21 @@ body {
 
 .container__span__alu {
   z-index: 1;
-  text-transform: uppercase;
 }
 
-/* CONTENEDOR DE BUSES */
+/* BUSES */
+.container-buses-principales {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
 .buses__container {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-transform: uppercase;
 }
 
-/* ESTILO DE BUSES */
 .data,
 .directions,
 .control {
@@ -131,55 +126,37 @@ body {
   width: 30px;
   height: 400px;
   background-color: #e9ecef;
-  margin: 10px;
-  text-transform: uppercase;
 }
 
-/* ESTADO ACTIVO DE LOS COMPONENTES */
+/* ACTIVACIÓN DE COMPONENTES */
 .elemento__procesador__activo {
   border: 2px solid #0d6efd;
   background-color: #cfe2ff;
   box-shadow: 0 0 10px rgba(13, 110, 253, 0.6);
-  text-transform: uppercase;
 }
 
-/* TARJETAS DE MEMORIA Y SALIDA */
+/* TARJETAS */
 .container__body__principal__card,
-.container__output {
+.container__output,
+.container__memoria__datos {
   background-color: #ffffff;
   padding: 15px;
   margin: 5px;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  text-transform: uppercase;
 }
 
 mat-card-title {
   font-size: 1.2rem;
   color: #0d6efd;
   font-weight: bold;
-  text-transform: uppercase;
 }
 
-.tabla-memoria {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: center;
-}
-
-.tabla-memoria td {
-  border: 1px solid #ccc;
-  padding: 5px;
-}
-
-.container__memoria__datos {
-  margin-top: 20px;
-  width: fit-content;
-}
-
+/* TABLAS */
 table {
   border-collapse: collapse;
   margin-top: 10px;
+  width: 100%;
 }
 
 th,
@@ -187,12 +164,4 @@ td {
   border: 1px solid #999;
   padding: 8px 12px;
   text-align: center;
-}
-
-/* BOTÓN DE INICIO */
-.header__button {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  text-transform: uppercase;
 }

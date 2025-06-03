@@ -25,3 +25,30 @@ out f
 jmp 0
 halt
 load a 999
+
+
+// Operacion (5+8)/((2+5)-2) = 8  --> Prueba artimetica con guardado en la memoria
+load a 5
+load b 8
+mul a b c
+load d 2
+load e 5
+add d e f
+load g 2
+sub f g h
+div c h a
+out a
+store_mem a 1 1
+halt
+
+
+
+// condiciones de saltos, hasta que B no sea 10 no termina el programa (b < 10)
+load a 10
+in b
+cmp a b
+jne 7
+add a b b
+halt
+inc b
+jmp 2

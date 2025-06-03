@@ -61,6 +61,27 @@
           </div>
         </div>
       </div>
+      <mat-card class="container__io">
+        <mat-card-title>ENTRADA</mat-card-title>
+        <mat-card-content>
+          <mat-form-field>
+            <mat-label>Valor de entrada</mat-label>
+            <input matInput type="number" [(ngModel)]="valorEntrada">
+          </mat-form-field>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="container__output">
+        <mat-card-title> OUTPUT </mat-card-title>
+        <mat-card-content>
+          <div>
+            {{ estadoComputador }}
+          </div>
+          <div>
+            {{ output }}
+          </div>
+        </mat-card-content>
+      </mat-card>
     </div>
 
     <div class="container-componentes-secundarios-CPU">
@@ -107,36 +128,6 @@
     </div>
 
     <div class="container-componentes-finales">
-      <mat-card class="container__body__principal__card"
-        [ngClass]="{ elemento__procesador__activo: memoriaEstaActiva }">
-        <mat-card-title>MEMORIA DE PROGRAMA</mat-card-title>
-        <mat-card-content>
-          <div *ngFor="let instruccion of memoria.celdas; index as index">
-            {{ index + 1 }} - {{ instruccion }}
-          </div>
-        </mat-card-content>
-      </mat-card>
-      <mat-card class="container__io">
-        <mat-card-title>ENTRADA</mat-card-title>
-        <mat-card-content>
-          <mat-form-field>
-            <mat-label>Valor de entrada</mat-label>
-            <input matInput type="number" [(ngModel)]="valorEntrada">
-          </mat-form-field>
-        </mat-card-content>
-      </mat-card>
-
-      <mat-card class="container__output">
-        <mat-card-title> OUTPUT </mat-card-title>
-        <mat-card-content>
-          <div>
-            {{ estadoComputador }}
-          </div>
-          <div>
-            {{ output }}
-          </div>
-        </mat-card-content>
-      </mat-card>
       <mat-card class="container__memoria__datos">
         <mat-card-title>MEMORIA DE DATOS (4x4)</mat-card-title>
         <mat-card-content>
@@ -156,10 +147,15 @@
           </table>
         </mat-card-content>
       </mat-card>
-
-
-
-
+      <mat-card class="container__body__principal__card"
+        [ngClass]="{ elemento__procesador__activo: memoriaEstaActiva }">
+        <mat-card-title>MEMORIA DE PROGRAMA</mat-card-title>
+        <mat-card-content>
+          <div *ngFor="let instruccion of memoria.celdas; index as index">
+            {{ index + 1 }} - {{ instruccion }}
+          </div>
+        </mat-card-content>
+      </mat-card>
     </div>
   </div>
 </body>
